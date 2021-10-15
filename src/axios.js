@@ -9,11 +9,10 @@ const http = axios.create({
 });
 
 // http request 拦截器
-axios.interceptors.request.use(
+http.interceptors.request.use(
     config => {
-        console.log(store.state.profile.token)
         if (store.state.profile.token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
-            config.headers.Authorization = store.state.token;
+            config.headers.auth = store.state.profile.token;
         }
         return config;
     },
