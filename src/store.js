@@ -3,9 +3,9 @@ import { createStore } from 'vuex'
 // 创建一个新的 store 实例
 const store = createStore({
     state() {
-        return sessionStorage.getItem('state') ? JSON.parse(sessionStorage.getItem('state')) : {
+        return  {
             count: 0,
-            profile: '',
+            profile: {},
             collapse: false
 
         }
@@ -14,8 +14,11 @@ const store = createStore({
         increment(state) {
             state.count++
         },
-        setProfile(state, v) {
+        set_profile(state, v) {
             state.profile = v
+        },
+        logout(state) {
+            state.profile = {}
         }
     }
 })
