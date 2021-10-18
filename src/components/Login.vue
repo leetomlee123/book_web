@@ -2,42 +2,42 @@
     <a-row type="flex" justify="center">
         <a-col :span="8" class="main">
             <div class="inner">
-                    <a-space direction="vertical" size="large">
-                        <h1>{{ title }}</h1>
-                        <a-form
-                            :model="formState"
-                            @finish="handleFinish"
-                            @finishFailed="handleFinishFailed"
-                            class="m_form"
-                        >
-                            <a-form-item label="账户">
-                                <a-input v-model:value="formState.user" placeholder="Username">
-                                    <template #prefix>
-                                        <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
-                                    </template>
-                                </a-input>
-                            </a-form-item>
-                            <a-form-item label="密码">
-                                <a-input
-                                    v-model:value="formState.password"
-                                    type="password"
-                                    placeholder="Password"
-                                >
-                                    <template #prefix>
-                                        <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
-                                    </template>
-                                </a-input>
-                            </a-form-item>
-                            <a-form-item>
-                                <a-button
-                                    type="primary"
-                                    html-type="submit"
-                                    :disabled="formState.user === '' || formState.password === ''"
-                                    @click="login"
-                                >登录</a-button>
-                            </a-form-item>
-                        </a-form>
-                    </a-space>
+                <a-space direction="vertical" size="large">
+                    <h1>{{ title }}</h1>
+                    <a-form
+                        :model="formState"
+                        @finish="handleFinish"
+                        @finishFailed="handleFinishFailed"
+                        class="m_form"
+                    >
+                        <a-form-item label="账户">
+                            <a-input v-model:value="formState.user" placeholder="Username">
+                                <template #prefix>
+                                    <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
+                                </template>
+                            </a-input>
+                        </a-form-item>
+                        <a-form-item label="密码">
+                            <a-input
+                                v-model:value="formState.password"
+                                type="password"
+                                placeholder="Password"
+                            >
+                                <template #prefix>
+                                    <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
+                                </template>
+                            </a-input>
+                        </a-form-item>
+                        <a-form-item>
+                            <a-button
+                                type="primary"
+                                html-type="submit"
+                                :disabled="formState.user === '' || formState.password === ''"
+                                @click="login"
+                            >登录</a-button>
+                        </a-form-item>
+                    </a-form>
+                </a-space>
             </div>
         </a-col>
     </a-row>

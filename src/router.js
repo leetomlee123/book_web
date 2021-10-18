@@ -1,16 +1,28 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import Chapters from './components/Chapters.vue'
+import Content from './components/Content.vue'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
-import JobList from './components/JobList.vue'
+import Shelf from './components/Shelf.vue'
+import Index from './components/Index.vue'
 import store from './store'
 const routes = [
     { path: "/", redirect: '/home' },
     {
         path: "/home", component: Home,
-        children:[
+        children: [
             {
-                path: "/JobList", component: JobList
+                path: "/shelf", component: Shelf
             },
+            {
+                path: "/chapters", component: Chapters
+            },
+            {
+                path: "", component: Index
+            },
+            {
+                name: 'content', path: "/content", component: Content
+            }
         ]
     },
 
