@@ -1,46 +1,49 @@
 <template>
-    <a-row type="flex" justify="center">
-        <a-col :span="8" class="main">
-            <div class="inner">
-                <a-space direction="vertical" size="large">
-                    <h1>{{ title }}</h1>
-                    <a-form
-                        :model="formState"
-                        @finish="handleFinish"
-                        @finishFailed="handleFinishFailed"
-                        class="m_form"
-                    >
-                        <a-form-item label="账户">
-                            <a-input v-model:value="formState.user" placeholder="Username">
-                                <template #prefix>
-                                    <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
-                                </template>
-                            </a-input>
-                        </a-form-item>
-                        <a-form-item label="密码">
-                            <a-input
-                                v-model:value="formState.password"
-                                type="password"
-                                placeholder="Password"
-                            >
-                                <template #prefix>
-                                    <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
-                                </template>
-                            </a-input>
-                        </a-form-item>
-                        <a-form-item>
-                            <a-button
-                                type="primary"
-                                html-type="submit"
-                                :disabled="formState.user === '' || formState.password === ''"
-                                @click="login"
-                            >登录</a-button>
-                        </a-form-item>
-                    </a-form>
+    <div class="login">
+        <a-row type="flex" justify="center" :gutter="[0, 0]">
+            <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 5 }" class="main">
+                <h1>{{ title }}</h1>
+                <a-form
+                    :model="formState"
+                    @finish="handleFinish"
+                    @finishFailed="handleFinishFailed"
+                    class="m_form"
+                >
+                    <a-form-item label="账户">
+                        <a-input v-model:value="formState.user" placeholder="Username">
+                            <template #prefix>
+                                <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
+                            </template>
+                        </a-input>
+                    </a-form-item>
+                    <a-form-item label="密码">
+                        <a-input
+                            v-model:value="formState.password"
+                            type="password"
+                            placeholder="Password"
+                        >
+                            <template #prefix>
+                                <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
+                            </template>
+                        </a-input>
+                    </a-form-item>
+                    <a-form-item>
+                        <a-button
+                            type="primary"
+                            html-type="submit"
+                            :disabled="formState.user === '' || formState.password === ''"
+                            @click="login"
+                        >登录</a-button>
+                    </a-form-item>
+                </a-form>
+
+                <a-space size="large">
+                    <router-link to="/forget">忘记密码</router-link>
+                    <router-link to="/register">注册账号</router-link>
                 </a-space>
-            </div>
-        </a-col>
-    </a-row>
+            </a-col>
+        </a-row>
+    </div>
 </template>
 
 
@@ -103,14 +106,19 @@ export default {
 
 <style>
 .main {
-    width: 400px;
     background: rgba(128, 128, 128, 0.08);
     height: 422px;
     margin-top: 60px;
+    text-align: center;
+    padding: 50px;
 }
 .inner {
     padding-left: 150px;
     padding-right: 150px;
     text-align: center;
+}
+.login {
+    background-image: url(https://h2.ioliu.cn/bing/MozambiqueSandbar_EN-AU11463522567_1920x1080.jpg?imageslim);
+    height: 100%;
 }
 </style>

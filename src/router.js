@@ -2,9 +2,11 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Chapters from './components/Chapters.vue'
 import Content from './components/Content.vue'
 import Home from './components/Home.vue'
-import Login from './components/Login.vue'
-import Shelf from './components/Shelf.vue'
 import Index from './components/Index.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import Shelf from './components/Shelf.vue'
+import Forget from './components/Forget.vue'
 import store from './store'
 const routes = [
     { path: "/", redirect: '/home' },
@@ -30,6 +32,16 @@ const routes = [
         path: "/login", component: Login, meta: {
             canNoToken: true
         }
+    },
+    {
+        path: '/register', component: Register, meta: {
+            canNoToken: true
+        }
+    },
+    {
+        path: '/forget', component: Forget, meta: {
+            canNoToken: true
+        }
     }
 ]
 
@@ -40,6 +52,9 @@ const router = createRouter({
     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
     history: createWebHashHistory(),
     routes, // `routes: routes` 的缩写
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
 
 router.beforeEach((to, from, next) => {

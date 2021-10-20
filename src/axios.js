@@ -7,7 +7,11 @@ const http = axios.create({
     // timeout: 1000,
     // headers: {'X-Custom-Header': 'foobar'}
 });
-
+const http2 = axios.create({
+    baseURL: 'http://134.175.83.19:8012',
+    // timeout: 1000,
+    // headers: {'X-Custom-Header': 'foobar'}
+});
 // http request 拦截器
 http.interceptors.request.use(
     config => {
@@ -43,5 +47,5 @@ http.interceptors.response.use(
         }
         return Promise.reject(error)   // 返回接口返回的错误信息
     });
+export { http as default, http2 };
 
-export default http

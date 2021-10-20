@@ -23,14 +23,19 @@ const store = createStore({
         logout(state) {
             state.profile = {}
         },
-        set_shelf(state, v) { state.shelf = v },
+        set_shelf(state, v) {
+            if (v == undefined || v == "" || v == null) {
+                v = []
+            }
+            state.shelf = v
+        },
         set_bid(state, v) { state.bid = v },
         set_chapterIdx(state, v) { state.chapterIdx = v },
         set_chapters(state, v) { state.chapters = v },
     },
-    getters:{
+    getters: {
 
-        getChapter(state){
+        getChapter(state) {
             return state.chapters[state.chapterIdx]
         }
     }

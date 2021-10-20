@@ -1,5 +1,9 @@
 <template>
-    <a-row type="flex" justify="center" :gutter="[0, 10]">
+    <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length == 0">
+        <a-spin :indicator="indicator" :delay="500"/>
+    </a-row>
+
+    <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length > 0">
         <a-col :span="24">
             <h1 ref="title" style="text-align: center;padding-bottom:10px">{{ chapter['name'] }}</h1>
         </a-col>
@@ -16,6 +20,7 @@
                 </a-col>
             </a-row>
         </a-col>
+
         <a-col
             :xs="24"
             :sm="16"
@@ -45,12 +50,22 @@
 </template>
 
 <script>
+import { LoadingOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
-import http from '../axios';
+import { h } from 'vue';
+import http, { http2 as f } from '../axios';
 export default {
     name: "Content",
-    setup(props) {
-
+    setup() {
+        const indicator = h(LoadingOutlined, {
+            style: {
+                fontSize: '24px',
+            },
+            spin: true,
+        });
+        return {
+            indicator,
+        };
     },
     data() {
         return {
@@ -77,14 +92,24 @@ export default {
     },
     methods: {
         async fetchContent() {
+            this.content = []
             var res = await http.get("/book/chapter/" + this.chapter['id'])
-            this.content = res.data['content'].split('\n')
+            var content = res.data['content']
+            var link = res.data['link']
+            if (content == "请更新APP到最新版本.....酷安 DEMOONE 或者 QQ群 953457248" || content == "" || content == null) {
 
+                res = await f.post("parseHtml", {
+                    "link": link,
+                    "id": this.chapter['id']
+                })
+                content = res.data['data']
+
+            }
+            this.content = content.split('\n')
         },
         getChapter() {
             console.log(this.idx)
             this.chapter = this.$store.state.chapters[this.idx]
-
         },
         pre() {
             if (this.idx == 0) {

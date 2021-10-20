@@ -1,17 +1,17 @@
 
 
 <template>
-    <a-row class="header" type="flex" justify="space-around  " align="middle">
-        <a-col>
+    <a-row class="header" type="flex" align="center">
+        <a-col :xs="{ span: 8, offset: 2 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
             <span class="site_name">
                 <router-link to="/">DeerBook</router-link>
             </span>
         </a-col>
-        <a-col>
+        <a-col :xs="{ span: 10, offset: 2 }" :sm="16" :md="12" :lg="{ span: 4, offset: 14 }">
             <a-space class="action" algin="center" size="large">
                 <a-dropdown :trigger="['click']">
                     <a class="ant-dropdown-link" @click.prevent>
-                     {{username}}
+                        {{ username }}
                         <DownOutlined />
                     </a>
                     <template #overlay>
@@ -22,11 +22,12 @@
                             <a-menu-item>
                                 <a href="javascript:;">个人资料</a>
                             </a-menu-item>
-                    
+                            <a-menu-item>
+                                <a class="logout" @click="logout">登出</a>
+                            </a-menu-item>
                         </a-menu>
                     </template>
                 </a-dropdown>
-                <a class="logout" @click="logout">登出</a>
             </a-space>
         </a-col>
     </a-row>
@@ -73,7 +74,6 @@ export default {
     height: 64px;
     line-height: 64px;
     text-align: center;
-    margin-bottom: 60px;
 }
 .action {
     margin-right: 6px;
@@ -89,6 +89,7 @@ export default {
 .home {
     padding-left: 10%;
     padding-right: 10%;
+    padding-top: 30px;
 }
 .bottom {
     padding-top: 50px;
