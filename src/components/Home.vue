@@ -32,7 +32,7 @@
 
 
   <a-row type="flex" justify="start" class="home">
-    <a-col :xs="{ span: 20, offset: 2 }" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
+    <a-col :xs="{ span: 22,offset:1 }" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
         <router-view></router-view>
     </a-col>
   </a-row>

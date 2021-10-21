@@ -1,14 +1,13 @@
 <template>
-  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length == 0">
+  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length === 0">
     <a-spin :indicator="indicator" :delay="500"/>
   </a-row>
 
-  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length > 0" class="content">
-    <a-col :span="24">
-      <h1 ref="title" style="text-align: center;padding-bottom:10px">{{ chapter['name'] }}</h1>
-    </a-col>
-    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
-      <a-row>
+  <a-row type="flex" justify="center" :gutter="[20, 10]" v-if="content.length > 0">
+    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }" class="content">
+      <a-space direction="vertical " size="middle">
+      <h1 ref="title" style="text-align: center;padding-bottom:20px">{{ chapter['name'] }}</h1>
+      <a-row  >
         <a-col :span="8" class="c">
           <a @click="pre">上一章</a>
         </a-col>
@@ -19,33 +18,32 @@
           <a @click="next">下一章</a>
         </a-col>
       </a-row>
-    </a-col>
+      <a-row  :gutter="[10, 10]" justify="center">
+      <a-col
+          :xs="{span:22}" :sm="16" :md="12" :lg="8" :xl="{ span: 22 }"
+          v-for="(item, index) in content"
+          :key="index"
+      >
+        <span class="paragraph">{{ item }}</span>
+      </a-col >
+        </a-row>
+      <div style="padding-top:10px">
+        <a-row>
+          <a-col :span="8" class="c">
+            <a @click="pre">上一章</a>
+          </a-col>
+          <a-col :span="8" class="c">
+            <router-link to="/chapters">目录</router-link>
+          </a-col>
+          <a-col :span="8" class="c">
+            <a @click="next">下一章</a>
+          </a-col>
+        </a-row>
+      </div>
+      <a-back-top ref="goTop"/>
+      </a-space>
 
-    <a-col
-        :xs="24"
-        :sm="16"
-        :md="12"
-        :lg="8"
-        :xl="{ span: 14, }"
-        v-for="(item, index) in content"
-        :key="index"
-    >
-      <span class="paragraph">{{ item }}</span>
     </a-col>
-    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }" style="padding-top:10px">
-      <a-row>
-        <a-col :span="8" class="c">
-          <a @click="pre">上一章</a>
-        </a-col>
-        <a-col :span="8" class="c">
-          <router-link to="/chapters">目录</router-link>
-        </a-col>
-        <a-col :span="8" class="c">
-          <a @click="next">下一章</a>
-        </a-col>
-      </a-row>
-    </a-col>
-    <a-back-top ref="goTop"/>
   </a-row>
 </template>
 
@@ -152,6 +150,7 @@ export default {
 
 .content {
   background: #f5f5f5;
+
 }
 
 </style>

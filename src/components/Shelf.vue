@@ -1,6 +1,5 @@
 <template>
-    <div class="content">
-        <a-row type="flex" justify="start" v-if="shelf.length > 0">
+        <a-row type="flex" justify="center" v-if="shelf.length > 0">
             <a-col
                 :xs="10"
                 :sm="16"
@@ -9,8 +8,9 @@
                 :xl="{ span: 2, offset: 2 }"
                 v-for="(item, index) in shelf"
                 :key="item.Id"
-                class="height-120"
+                class="height-120 "
                 @click="chapters(item.Id)"
+
             >
                 <a-image
                     :width="100"
@@ -26,7 +26,6 @@
         </a-row>
             <a-empty v-if="shelf.length == 0" />
 
-    </div>
 </template>
 
 <script>
@@ -68,5 +67,8 @@ export default {
 <style>
 .author {
     padding-top: 5px;
+}
+.c{
+  text-align: center;
 }
 </style>

@@ -1,24 +1,23 @@
 <template>
 <div class="m">
     <a-row type="flex" justify="center" :gutter="[0, 0]" >
-        <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 5 }" class="main">
+        <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 6 }" class="main">
             <h1>{{ title }}</h1>
             <a-form
                 :model="formState"
                 ref="formRef"
                 @finish="handleFinish"
                 @finishFailed="handleFinishFailed"
-                :labelAlign="left"
-                :rules="rules"
-            >
-                <a-form-item label="账户" has-feedback>
+                labelAlgin="right"
+                >
+                <a-form-item label="账户" >
                     <a-input v-model:value="formState.user" placeholder="Username">
                         <template #prefix>
                             <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
                         </template>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="密码" has-feedback name="pass">
+                <a-form-item label="密码" has-feedback >
                     <a-input
                         v-model:value="formState.password"
                         type="password"
@@ -30,7 +29,7 @@
                         </template>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="重复密码" has-feedback name="checkPass">
+                <a-form-item label="重复密码" has-feedback  labelAlgin="right">
                     <a-input
                         v-model:value="formState.repeatPassword"
                         type="password"
@@ -163,5 +162,10 @@ export default {
 .m {
     background-image: url(https://h2.ioliu.cn/bing/MozambiqueSandbar_EN-AU11463522567_1920x1080.jpg?imageslim);
     height: 100%;
+}
+
+label{
+  width:70px;
+
 }
 </style>

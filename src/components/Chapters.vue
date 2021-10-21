@@ -51,7 +51,7 @@
                     </a-space>
                 </span>
                 <a-divider />
-                <a-row type="flex" justify="start">
+                <a-row type="flex" justify="center">
                     <a-col
                         :xs="12"
                         :sm="16"
@@ -76,7 +76,7 @@
                 </a-row>
             </a-tab-pane>
             <a-tab-pane key="2" :tab="'目录(' + chaptersLen + '章)'" force-render>
-                <a-row type="flex" justify="space-around  " align="middle" :gutter="[0, 1]">
+                <a-row type="flex" justify="space-around  " align="middle" :gutter="[0, 10]">
                     <a-col
                         :xs="20"
                         :sm="16"
@@ -86,8 +86,8 @@
                         v-for="(item, index) in chapters"
                         :key="index"
                     >
-                        <span @click="goContent(index)" class="item">{{ item.name }}</span>
-                        <a-divider />
+                        <a @click="goContent(index)" class="item">{{ item.name }}</a>
+<!--                        <a-divider />-->
                     </a-col>
                 </a-row>
                 <a-back-top />
@@ -184,7 +184,5 @@ export default {
 </script>
 
 <style>
-.item:hover {
-    color: #ed4259;
-}
+
 </style>
