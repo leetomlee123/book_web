@@ -8,7 +8,7 @@
                 ref="formRef"
                 @finish="handleFinish"
                 @finishFailed="handleFinishFailed"
-                labelAlgin="right"
+                :label-col="labelCol" :wrapper-col="wrapperCol"
                 >
                 <a-form-item label="账户" >
                     <a-input v-model:value="formState.user" placeholder="Username">
@@ -125,6 +125,14 @@ export default {
         };
 
         return {
+          labelCol: {
+            style: {
+              width: '100px',
+            },
+          },
+          wrapperCol: {
+            span: 24,
+          },
             formState,
             handleFinish,
             handleFinishFailed,
@@ -164,8 +172,5 @@ export default {
     height: 100%;
 }
 
-label{
-  width:70px;
 
-}
 </style>

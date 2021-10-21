@@ -1,10 +1,20 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-
+import createImportPlugin from 'vite-plugin-import'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue()
+    vue(),
+    createImportPlugin({
+      onlyBuild: false,//是否只需要在生产环境中使用
+      babelImportPluginOptions: [
+        {
+          libraryName: 'antd',
+          libraryDirectory: 'es',
+          style: true, // or 'css'
+        },
+      ],
+    }),
   ], 
   // server: {
   //   port: '3000',

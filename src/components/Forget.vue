@@ -6,7 +6,9 @@
           :model="formState"
           @finish="handleFinish"
           @finishFailed="handleFinishFailed"
-          :labelAlign="left"
+          labelAlign="right"
+          :label-col="labelCol"
+          :wrapper-col="wrapperCol"
       >
         <a-form-item label="账户" has-feedback>
           <a-input v-model:value="formState.user" placeholder="Username">
@@ -90,6 +92,14 @@ export default {
     };
 
     return {
+      labelCol: {
+        style: {
+          width: '100px',
+        },
+      },
+      wrapperCol: {
+        span: 24,
+      },
       formState,
       handleFinish,
       handleFinishFailed,
@@ -128,8 +138,4 @@ export default {
 }
 
 
-label {
-  width: 100px;
-
-}
 </style>

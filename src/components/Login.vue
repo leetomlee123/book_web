@@ -121,8 +121,5 @@ export default {
     background-image: url(https://h2.ioliu.cn/bing/MozambiqueSandbar_EN-AU11463522567_1920x1080.jpg?imageslim);
     height: 100%;
 }
-label {
-  width: 50px !important;
 
-}
 </style>
