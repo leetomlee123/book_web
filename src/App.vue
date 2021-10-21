@@ -13,7 +13,7 @@ export default {
     //在页面加载时读取sessionStorage里的状态信息
     if (sessionStorage.getItem("store")) {
       this.$store.replaceState(Object.assign({},
-        this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
+          this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
     }
     //在页面刷新时将vuex里的信息保存到sessionStorage里
     window.addEventListener("beforeunload", () => {
@@ -23,5 +23,22 @@ export default {
 }
 </script>
 <style>
+/*a:active {*/
+/*  color: #fff ;*/
+/*  text-decoration: none;*/
+/*  background: #f93;*/
+/*}*/
 
+/*a {*/
+/*  color: #956839 ;*/
+/*  background-color: transparent;*/
+/*  text-decoration: none;*/
+/*}*/
+
+
+
+/*a:link {*/
+/*  color: #956839;*/
+/*  text-decoration: none;*/
+/*}*/
 </style>
