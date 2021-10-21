@@ -139,9 +139,10 @@ export default {
 
 <style>
 .paragraph {
-  font-size: 18px;
+  font-size: 22px;
   font-family: Georgia, "Times New Roman", Times, serif;
   padding-left: 2em;
+  line-height: 2;
 }
 
 .c {
