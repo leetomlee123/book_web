@@ -1,5 +1,5 @@
 <template>
-        <a-row type="flex" justify="center" v-if="shelf.length > 0">
+        <a-row type="flex" justify="start" v-if="shelf.length > 0">
             <a-col
                 :xs="10"
                 :sm="16"

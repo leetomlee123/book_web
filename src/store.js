@@ -11,6 +11,7 @@ const store = createStore({
             bid: "",
             chapters: [],
             chapterIdx: 0,
+            bookInfo:{}
         }
     },
     mutations: {
@@ -24,7 +25,7 @@ const store = createStore({
             state.profile = {}
         },
         set_shelf(state, v) {
-            if (v == undefined || v == "" || v == null) {
+            if (v === undefined || v === "" || v == null) {
                 v = []
             }
             state.shelf = v
@@ -32,6 +33,7 @@ const store = createStore({
         set_bid(state, v) { state.bid = v },
         set_chapterIdx(state, v) { state.chapterIdx = v },
         set_chapters(state, v) { state.chapters = v },
+        set_book_info(state, v) { state.bookInfo = v },
     },
     getters: {
 

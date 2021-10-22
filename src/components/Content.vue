@@ -2,32 +2,20 @@
   <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length === 0">
     <a-spin :indicator="indicator" :delay="500"/>
   </a-row>
-
+  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length > 0">
+    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
+      <a-breadcrumb separator=">">
+        <a-breadcrumb-item>
+          <router-link to="/chapters">{{ bookInfo['Name'] }}</router-link>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>{{ chapter['name'] }}</a-breadcrumb-item>
+      </a-breadcrumb>
+    </a-col>
+  </a-row>
   <a-row type="flex" justify="center" :gutter="[20, 10]" v-if="content.length > 0">
     <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }" class="content">
       <a-space direction="vertical " size="middle">
-      <h1 ref="title" style="text-align: center;padding-bottom:20px">{{ chapter['name'] }}</h1>
-      <a-row  >
-        <a-col :span="8" class="c">
-          <a @click="pre">上一章</a>
-        </a-col>
-        <a-col :span="8" class="c">
-          <router-link to="/chapters">目录</router-link>
-        </a-col>
-        <a-col :span="8" class="c">
-          <a @click="next">下一章</a>
-        </a-col>
-      </a-row>
-      <a-row  :gutter="[10, 10]" justify="center">
-      <a-col
-          :xs="{span:22}" :sm="16" :md="12" :lg="8" :xl="{ span: 22 }"
-          v-for="(item, index) in content"
-          :key="index"
-      >
-        <span class="paragraph">{{ item }}</span>
-      </a-col >
-        </a-row>
-      <div style="padding-top:10px">
+        <h1 ref="title" style="text-align: center;padding-bottom:20px;color: #956839">{{ chapter['name'] }}</h1>
         <a-row>
           <a-col :span="8" class="c">
             <a @click="pre">上一章</a>
@@ -39,8 +27,29 @@
             <a @click="next">下一章</a>
           </a-col>
         </a-row>
-      </div>
-      <a-back-top ref="goTop"/>
+        <a-row :gutter="[10, 10]" justify="center">
+          <a-col
+              :xs="{span:22}" :sm="16" :md="12" :lg="8" :xl="{ span: 22 }"
+              v-for="(item, index) in content"
+              :key="index"
+          >
+            <span class="paragraph">{{ item }}</span>
+          </a-col>
+        </a-row>
+        <div style="padding-top:10px">
+          <a-row>
+            <a-col :span="8" class="c">
+              <a @click="pre">上一章</a>
+            </a-col>
+            <a-col :span="8" class="c">
+              <router-link to="/chapters">目录</router-link>
+            </a-col>
+            <a-col :span="8" class="c">
+              <a @click="next">下一章</a>
+            </a-col>
+          </a-row>
+        </div>
+        <a-back-top ref="goTop"/>
       </a-space>
 
     </a-col>
@@ -70,7 +79,8 @@ export default {
     return {
       chapter: {},
       idx: this.$store.state.chapterIdx,
-      content: []
+      content: [],
+      bookInfo: this.$store.state.bookInfo
     }
   },
   computed: {
@@ -151,6 +161,7 @@ export default {
 
 .content {
   background: #f5f5f5;
+  margin-top: 10px;
 
 }
 
