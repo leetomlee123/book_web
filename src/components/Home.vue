@@ -34,7 +34,7 @@
   </a-row>
 
   <a-row type="flex" justify="start" class="home">
-    <a-col :xs="{ span: 24}" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
+    <a-col :xs="{ span: 22, offset: 1 }" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
       <keep-alive :include="cacheViews">
         <router-view></router-view>
       </keep-alive>

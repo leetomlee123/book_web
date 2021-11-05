@@ -1,7 +1,7 @@
 <template>
   <div class="cps">
     <a-row type="flex" justify="start" align="middle" :gutter="[0, 1]">
-      <a-col :xs="{ span: 10 }" :sm="16" :md="12" :lg="8" :xl="{ span: 2, offset: 8 }">
+      <a-col :xs="{ span: 10,offset1 }" :sm="16" :md="12" :lg="8" :xl="{ span: 2, offset: 8 }">
         <a-image
           :width="110"
           :src="bookInfo['Img']"
