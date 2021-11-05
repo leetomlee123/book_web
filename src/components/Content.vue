@@ -3,7 +3,7 @@
     <a-spin :indicator="indicator" :delay="500"/>
   </a-row>
   <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length > 0">
-    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
+    <a-col :xs="{span:22,offset:1}" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
       <a-breadcrumb separator=">">
         <a-breadcrumb-item>
           <router-link to="/chapters">{{ bookInfo['Name'] }}</router-link>

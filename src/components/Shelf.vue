@@ -1,5 +1,5 @@
 <template>
-        <a-row type="flex" justify="start" v-if="shelf.length > 0">
+        <a-row type="flex" justify="center" v-if="shelf.length > 0">
             <a-col
                 :xs="10"
                 :sm="16"
@@ -12,6 +12,7 @@
                 @click="chapters(item.Id)"
 
             >
+            <center>
                 <a-image
                     :width="100"
                     :src="item.Img"
@@ -22,6 +23,7 @@
                     {{ item.Name }}|
                     <em>{{ item.Author }}</em>
                 </p>
+                </center>
             </a-col>
         </a-row>
             <a-empty v-if="shelf.length == 0" />

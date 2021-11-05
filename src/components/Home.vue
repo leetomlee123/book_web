@@ -1,16 +1,19 @@
 <template>
-  <a-row class="header" type="flex" align="center">
-    <a-col :xs="{ span: 8, offset: 2 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
-            <span class="site_name">
-                <router-link to="/">DeerBook</router-link>
-            </span>
+  <a-row class="header" type="flex" align="start">
+    <a-col :xs="{ span: 8, offset: 1 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
+      <span class="site_name">
+        <router-link to="/">DeerBook</router-link>
+      </span>
     </a-col>
-    <a-col :xs="{ span: 10, offset: 2 }" :sm="16" :md="12" :lg="{ span: 4, offset: 14 }">
+    <a-col :xs="{ span: 10 }" :sm="16" :md="12" :lg="{ span: 16 }">
+ 
+    </a-col>
+    <a-col :xs="{ span: 4 }" :sm="16" :md="12" :lg="{ span: 2 }">
       <a-space class="action" algin="center" size="large">
         <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" @click.prevent>
             {{ username }}
-            <DownOutlined/>
+            <DownOutlined />
           </a>
           <template #overlay>
             <a-menu>
@@ -30,10 +33,11 @@
     </a-col>
   </a-row>
 
-
   <a-row type="flex" justify="start" class="home">
-    <a-col :xs="{ span: 22,offset:1 }" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
+    <a-col :xs="{ span: 24}" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
+      <keep-alive :include="cacheViews">
         <router-view></router-view>
+      </keep-alive>
     </a-col>
   </a-row>
 
@@ -57,12 +61,13 @@ export default {
   data() {
     return {
       username: this.$store.state.profile.username,
+      cacheViews: ['Index', "Shelf", "Chapters"]
     }
   },
   methods: {
     logout() {
       this.$store.commit("logout");
-      this.$router.replace({"path": "/login"})
+      this.$router.replace({ "path": "/login" })
     },
   },
 

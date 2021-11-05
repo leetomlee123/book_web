@@ -10,7 +10,7 @@
             class="m_form"
         >
           <a-form-item label="账户">
-            <a-input v-model:value="formState.user" placeholder="Username">
+            <a-input v-model:value="formState.user" placeholder="account">
               <template #prefix>
                 <UserOutlined style="color: rgba(0, 0, 0, 0.25)"/>
               </template>
@@ -20,7 +20,7 @@
             <a-input
                 v-model:value="formState.password"
                 type="password"
-                placeholder="Password"
+                placeholder="password"
             >
               <template #prefix>
                 <LockOutlined style="color: rgba(0, 0, 0, 0.25)"/>

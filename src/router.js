@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
 import Chapters from './components/Chapters.vue'
 import Content from './components/Content.vue'
 import Home from './components/Home.vue'
@@ -8,19 +8,20 @@ import Register from './components/Register.vue'
 import Shelf from './components/Shelf.vue'
 import Forget from './components/Forget.vue'
 import store from './store'
+
 const routes = [
-    { path: "/", redirect: '/home' },
+    {path: "/", redirect: '/home'},
     {
         path: "/home", component: Home,
         children: [
             {
-                path: "/shelf", component: Shelf
+                path: "/shelf", component: Shelf, name: "shelf"
             },
             {
-                path: "/chapters", component: Chapters
+                path: "/chapters", component: Chapters, name: "Chapters"
             },
             {
-                path: "", component: Index
+                path: "", component: Index, name: "Index"
             },
             {
                 name: 'content', path: "/content", component: Content
@@ -53,7 +54,7 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes, // `routes: routes` 的缩写
     scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 }
+        return {x: 0, y: 0}
     }
 })
 
