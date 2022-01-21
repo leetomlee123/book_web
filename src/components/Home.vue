@@ -1,35 +1,38 @@
 <template>
   <a-row class="header" type="flex" align="start">
-    <a-col :xs="{ span: 8, offset: 1 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
-      <span class="site_name">
-        <router-link to="/">DeerBook</router-link>
+    <a-col :xs="{ span: 4, offset: 1 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
+      <span class="nav_1">
+        <router-link to="/">Deer</router-link>
       </span>
     </a-col>
-    <a-col :xs="{ span: 10 }" :sm="16" :md="12" :lg="{ span: 16 }">
- 
-    </a-col>
-    <a-col :xs="{ span: 4 }" :sm="16" :md="12" :lg="{ span: 2 }">
-      <a-space class="action" algin="center" size="large">
-        <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link" @click.prevent>
-            {{ username }}
-            <DownOutlined />
-          </a>
-          <template #overlay>
-            <a-menu>
-              <a-menu-item>
-                <router-link to="/shelf">书架</router-link>
-              </a-menu-item>
-              <a-menu-item>
-                <a href="javascript:;">个人资料</a>
-              </a-menu-item>
-              <a-menu-item>
-                <a class="logout" @click="logout">登出</a>
-              </a-menu-item>
-            </a-menu>
-          </template>
-        </a-dropdown>
-      </a-space>
+
+    <a-col :xs="{ span: 4 }" :sm="16" :md="12" :lg="{ span: 2, offset: 16 }">
+      <span class="nav_2">
+        <a-space class="action" algin="center" size="large">
+          <a-dropdown :trigger="['click']">
+            <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+
+            <a class="ant-dropdown-link" @click.prevent>
+              {{ username }}
+              <DownOutlined />
+            </a>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item>
+                  <router-link to="/shelf">书架</router-link>
+                </a-menu-item>
+
+                <a-menu-item>
+                  <router-link to="/person">个人资料</router-link>
+                </a-menu-item>
+                <a-menu-item>
+                  <a class="logout" @click="logout">登出</a>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+        </a-space>
+      </span>
     </a-col>
   </a-row>
 
@@ -61,6 +64,7 @@ export default {
   data() {
     return {
       username: this.$store.state.profile.username,
+
       cacheViews: ['Index', "Shelf", "Chapters"]
     }
   },
@@ -76,8 +80,8 @@ export default {
 
 <style>
 .header {
-  height: 64px;
-  line-height: 64px;
+  height: 80px;
+  line-height: 80px;
   text-align: center;
 }
 
@@ -86,8 +90,14 @@ export default {
   font-size: 24px;
 }
 
-.site_name {
-  font-size: 30px;
+.nav_1 {
+  font-size: 48px;
+  line-height: 80px;
+}
+
+.nav_2 {
+  font-size: 25px;
+  line-height: 80px;
 }
 
 .logout {

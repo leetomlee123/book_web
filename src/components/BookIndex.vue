@@ -3,8 +3,7 @@
     <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
       <a-input-search v-model:value="value" placeholder="搜索书名/作者" enter-button @search="onSearch" />
     </a-col>
-
-    <a-col ref="target" :span="24"></a-col>
+    <a-col ref="target" :span="24" class="f"></a-col>
     <a-col
       :xs="8"
       :sm="2"
@@ -60,7 +59,7 @@
 import http from "../axios";
 
 export default {
-  name: "Index",
+  name: "BookIndex",
   components: {},
   setup(props) {
 
@@ -164,5 +163,8 @@ export default {
 .bks {
   margin-top: 20px;
   text-align: center;
+}
+.f{
+  padding-bottom: 40px;
 }
 </style>

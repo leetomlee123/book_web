@@ -1,9 +1,6 @@
 <template>
-  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length === 0">
-    <a-spin :indicator="indicator" :delay="500"/>
-  </a-row>
-  <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length > 0">
-    <a-col :xs="{span:22,offset:1}" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }">
+  <a-row type="flex" justify="center" :gutter="[0, 10]">
+    <a-col :xs="{ span: 22, offset: 1 }" :sm="16" :md="12" :lg="8" :xl="{ span: 22, }">
       <a-breadcrumb separator=">">
         <a-breadcrumb-item>
           <router-link to="/chapters">{{ bookInfo['Name'] }}</router-link>
@@ -12,26 +9,40 @@
       </a-breadcrumb>
     </a-col>
   </a-row>
-  <a-row type="flex" justify="center" :gutter="[20, 10]" v-if="content.length > 0">
-    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 14, }" class="content">
-      <a-space direction="vertical " size="middle">
-        <h1 ref="title" style="text-align: center;padding-bottom:20px;color: #956839">{{ chapter['name'] }}</h1>
-        <a-row>
-          <a-col :span="8" class="c">
-            <a @click="pre">上一章</a>
-          </a-col>
-          <a-col :span="8" class="c">
-            <router-link to="/chapters">目录</router-link>
-          </a-col>
-          <a-col :span="8" class="c">
-            <a @click="next">下一章</a>
-          </a-col>
+
+  <a-row type="flex" justify="center" :gutter="[20, 10]">
+    <a-col :xs="24" :sm="16" :md="12" :lg="8" :xl="{ span: 24, }" class="content">
+      <!-- <a-space direction="vertical " size="middle"> -->
+        <h1
+          ref="title"
+          style="text-align: center;padding-bottom:20px;color: #956839"
+        >{{ chapter['name'] }}</h1>
+        <a-row type="flex" >
+       <a-col :span="8" class="c">
+              <a @click="pre">上一章</a>
+            </a-col>
+            <a-col :span="8" class="c">
+              <router-link to="/chapters">目录</router-link>
+            </a-col>
+            <a-col :span="8" class="c">
+              <a @click="next">下一章</a>
+            </a-col>
         </a-row>
-        <a-row :gutter="[10, 10]" justify="center">
+
+        <a-row type="flex" justify="center" :gutter="[0, 10]" v-if="content.length == 0">
+          <a-spin :indicator="indicator" :delay="500" />
+        </a-row>
+
+
+        <a-row :gutter="[10, 10]" justify="center" v-else >
           <a-col
-              :xs="{span:22}" :sm="16" :md="12" :lg="8" :xl="{ span: 22 }"
-              v-for="(item, index) in content"
-              :key="index"
+            :xs="{ span: 22 }"
+            :sm="16"
+            :md="12"
+            :lg="8"
+            :xl="{ span: 22 }"
+            v-for="(item, index) in content"
+            :key="index"
           >
             <span class="paragraph">{{ item }}</span>
           </a-col>
@@ -49,18 +60,17 @@
             </a-col>
           </a-row>
         </div>
-        <a-back-top ref="goTop"/>
-      </a-space>
-
+        <a-back-top ref="goTop" />
+      <!-- </a-space> -->
     </a-col>
   </a-row>
 </template>
 
 <script>
-import {LoadingOutlined} from '@ant-design/icons-vue';
-import {message} from 'ant-design-vue';
-import {h} from 'vue';
-import http, {http2 as f} from '../axios';
+import { LoadingOutlined } from '@ant-design/icons-vue';
+import { message } from 'ant-design-vue';
+import { h } from 'vue';
+import http, { http2 as f } from '../axios';
 
 export default {
   name: "Content",
@@ -91,6 +101,7 @@ export default {
   created() {
     this.getChapter()
     this.fetchContent()
+
   },
   watch: {
     idx() {
@@ -162,7 +173,5 @@ export default {
 .content {
   background: #f5f5f5;
   margin-top: 10px;
-
 }
-
 </style>

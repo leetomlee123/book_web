@@ -1,6 +1,6 @@
 <template>
   <a-row type="flex" justify="center" :gutter="[0, 0]" class="m">
-    <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 5 }" class="main">
+    <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 8 }" class="main">
       <h1>{{ title }}</h1>
       <a-form
           :model="formState"
@@ -133,7 +133,6 @@ export default {
 </script>
 
 <style>.m {
-  background-image: url(https://h2.ioliu.cn/bing/MozambiqueSandbar_EN-AU11463522567_1920x1080.jpg?imageslim);
   height: 100%;
 }
 

@@ -1,41 +1,34 @@
 <template>
   <div class="login">
     <a-row type="flex" justify="center" :gutter="[0, 0]">
-      <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 5 }" class="main">
+      <a-col :xs="{ span: 20 }" :sm="16" :md="12" :lg="8" :xl="{ span: 8 }" class="main">
         <h1>{{ title }}</h1>
-        <a-form
-            :model="formState"
-            @finish="handleFinish"
-            @finishFailed="handleFinishFailed"
-            class="m_form"
-        >
+        <a-form :model="formState" @finish="handleFinish" @finishFailed="handleFinishFailed" class>
           <a-form-item label="账户">
             <a-input v-model:value="formState.user" placeholder="account">
               <template #prefix>
-                <UserOutlined style="color: rgba(0, 0, 0, 0.25)"/>
+                <UserOutlined style="color: rgba(0, 0, 0, 0.25)" />
               </template>
             </a-input>
           </a-form-item>
+
           <a-form-item label="密码">
-            <a-input
-                v-model:value="formState.password"
-                type="password"
-                placeholder="password"
-            >
+            <a-input v-model:value="formState.password" type="password" placeholder="password">
               <template #prefix>
-                <LockOutlined style="color: rgba(0, 0, 0, 0.25)"/>
+                <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
               </template>
             </a-input>
           </a-form-item>
-          <a-form-item>
-            <a-button
+          <center>
+            <a-form-item class="loginBtn">
+              <a-button
                 type="primary"
                 html-type="submit"
                 :disabled="formState.user === '' || formState.password === ''"
                 @click="login"
-            >登录
-            </a-button>
-          </a-form-item>
+              >登录</a-button>
+            </a-form-item>
+          </center>
         </a-form>
 
         <a-space size="large">
@@ -49,8 +42,8 @@
 
 
 <script>
-import {LockOutlined, UserOutlined} from '@ant-design/icons-vue';
-import {reactive} from 'vue';
+import { LockOutlined, UserOutlined } from '@ant-design/icons-vue';
+import { reactive } from 'vue';
 import http from './../axios';
 
 export default {
@@ -81,7 +74,7 @@ export default {
   },
   data() {
     return {
-      title: "Welcome to DeerBook"
+      title: "Welcome to Deer"
     }
   },
   methods: {
@@ -94,7 +87,8 @@ export default {
       this.$store.commit("set_profile", {
         "token": response.data.token,
         "username": this.formState.user,
-        "email": response.data.email
+        "email": response.data.email,
+        "vip": response.data.vip,
       })
       await this.$router.push("/home")
 
@@ -115,14 +109,12 @@ export default {
 }
 
 .inner {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 50px;
+  padding-right: 50px;
   text-align: center;
 }
 
 .login {
-  background-image: url(https://h2.ioliu.cn/bing/MozambiqueSandbar_EN-AU11463522567_1920x1080.jpg?imageslim);
   height: 100%;
 }
-
 </style>
