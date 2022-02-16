@@ -43,8 +43,13 @@
             </a-form-item>
         </a-form-item>
 
-        <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
-            <a-button type="primary" html-type="submit" block>Submit</a-button>
+        <a-form-item>
+            <a-button
+                :disabled="disabled"
+                type="primary"
+                html-type="submit"
+                block
+            >Push</a-button>
         </a-form-item>
     </a-form>
 </template>
@@ -53,9 +58,9 @@
 
 <script>
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons-vue';
+import { message } from 'ant-design-vue';
 import { reactive, ref } from 'vue';
 import http from './../axios';
-import { message } from 'ant-design-vue';
 export default {
     name: 'PushNewVersion',
     components: {
@@ -90,13 +95,12 @@ export default {
             return false;
         };
 
+
         const handleUpload = () => {
             const formData = new FormData();
             fileList.value.forEach(file => {
                 formData.append('file', file);
             });
-            debugger
-            console.log('dddddd')
             formData.append('desc', formState.desc);
             formData.append('force', formState.force ? 0 : 1);
             formData.append('version', formState.version);
@@ -107,6 +111,7 @@ export default {
                 uploading.value = false;
                 message.error('upload failed.');
             });
+
         }
 
 

@@ -112,7 +112,7 @@ export default {
         this.flag = false
       }
 
-      const res = await http.get("/book/search", {
+      const res = await http.get("/book/searchV", {
         params: {
           "key": this.value,
           "page": this.page,
@@ -124,7 +124,9 @@ export default {
         message.info("没有数据")
       }
 
-      this.books = data
+      this.books = data.books
+     
+      this.total = data.pages
 
     },
     clickCate(cate) {
@@ -164,7 +166,7 @@ export default {
   margin-top: 20px;
   text-align: center;
 }
-.f{
+.f {
   padding-bottom: 40px;
 }
 </style>

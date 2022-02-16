@@ -3,6 +3,7 @@ import axios from "axios";
 import router from './router';
 import store from './store';
 const http = axios.create({
+    // baseURL: 'http://127.0.0.1:8080/v1',
     baseURL: 'http://134.175.83.19:8011/v1',
     // timeout: 1000,
     // headers: {'X-Custom-Header': 'foobar'}

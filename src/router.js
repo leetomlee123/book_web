@@ -3,16 +3,15 @@ import BookIndex from "./components/BookIndex.vue"
 import Chapters from './components/Chapters.vue'
 import Content from './components/Content.vue'
 import Forget from './components/Forget.vue'
-import Home from './components/Home.vue'
 import Login from './components/Login.vue'
-import Person from './components/Person.vue'
-import Profile from './components/Profile.vue'
 import Register from './components/Register.vue'
+import store from './store'
 
 const routes = [
     { path: "/", redirect: '/home' },
     {
-        path: "/home", component: Home,
+        path: "/home", component: () => import('./components/Home.vue'), meta: {
+        },
         children: [
             {
                 path: "/shelf", component: () => import('./components/Shelf.vue'), name: "shelf"
@@ -28,14 +27,23 @@ const routes = [
                 name: 'content', path: "/content", component: Content
             },
             {
-                path: '/person', component: Person, children: [
+                path: '/person', component: () => import('./components/Person.vue'), children: [
 
                     {
-                        path: "pushNewVersion", component: () => import('./components/PushNewVersion.vue')
+                        path: "pushNewVersion", component: () => import('./components/PushNewVersion.vue'), meta: {
+                            needToken: true
+                        }
                     },
 
                     {
-                        path: "profile", component: () => import('./components/Profile.vue')
+                        path: "profile", component: () => import('./components/Profile.vue'), meta: {
+                            needToken: true
+                        }
+                    },
+                    {
+                        path: "", redirect: '/person/profile', meta: {
+                            needToken: true
+                        }
                     }
                 ]
             },
@@ -44,18 +52,15 @@ const routes = [
 
     {
         path: "/login", component: Login, meta: {
-            canNoToken: true
         }
     },
     {
         path: '/register', component: Register, meta: {
-            canNoToken: true
         }
     },
 
     {
         path: '/forget', component: Forget, meta: {
-            canNoToken: true
         }
     }
 ]
@@ -72,24 +77,24 @@ const router = createRouter({
     }
 })
 
-// router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
+    //  matched的数组中包含$route对象的检查元字段
+    //  arr.some() 表示判断该数组是否有元素符合相应的条件, 返回布尔值
+    debugger
+    if (!to.meta.needToken) {
+        // 判断当前是否有登录的权限
 
-//     //  matched的数组中包含$route对象的检查元字段
-//     //  arr.some() 表示判断该数组是否有元素符合相应的条件, 返回布尔值
-//     if (to.matched.some(record => record.meta.canNoToken)) {
-//         // 判断当前是否有登录的权限
+        next()
 
-//         next()
-
-//     } else {
-//         var token = store.state.profile.token;
-//         if (token != null && token != '' && token != undefined) {
-//             next()
-//         } else {
-//             next({
-//                 path: '/login'
-//             })
-//         }
-//     }
-// })
+    } else {
+        var token = store.state.profile.token;
+        if (token != null && token != '' && token != undefined) {
+            next()
+        } else {
+            next({
+                path: '/login'
+            })
+        }
+    }
+})
 export default router

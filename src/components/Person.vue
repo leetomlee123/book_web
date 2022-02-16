@@ -17,7 +17,7 @@
             </p>
         </a-upload-dragger>
     </a-card>-->
-    <a-row>
+    <a-row type="flex" justify="center">
         <a-col :lg="4">
             <div style="width: 256px;height:100%">
                 <!-- <a-button type="primary" style="margin-bottom: 16px" @click="toggleCollapsed">
@@ -30,13 +30,13 @@
                     mode="inline"
                     :inline-collapsed="collapsed"
                 >
-                    <a-menu-item key="1">
+                    <a-menu-item key="/person/profile">
                         <template #icon>
                             <user-outlined />
                         </template>
                         <router-link to="/person/profile">个人资料</router-link>
                     </a-menu-item>
-                    <a-menu-item key="2">
+                    <a-menu-item key="/person/pushNewVersion">
                         <template #icon>
                             <DesktopOutlined />
                         </template>
@@ -74,7 +74,7 @@
                 </a-menu>
             </div>
         </a-col>
-        <a-col :lg={offset:3,span:16}>
+        <a-col :lg="{ offset: 3, span: 16 }">
             <router-view></router-view>
         </a-col>
     </a-row>
@@ -86,6 +86,7 @@
 import { AppstoreOutlined, DesktopOutlined, InboxOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, PieChartOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import { reactive, ref, toRefs, watch } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
     name: "Person",
@@ -100,11 +101,10 @@ export default {
     },
 
     setup() {
+        const $router = useRouter()
         const state = reactive({
             collapsed: false,
-            selectedKeys: ['1'],
-            openKeys: ['sub1'],
-            preOpenKeys: ['sub1'],
+            selectedKeys: [$router.currentRoute.value.fullPath],
         });
         watch(() => state.openKeys, (_val, oldVal) => {
             state.preOpenKeys = oldVal;
