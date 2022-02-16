@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       chapter: {},
-      idx: this.$store.state.chapterIdx,
+      idx: this.$route.params.idx,
       content: [],
       bookInfo: this.$store.state.bookInfo
     }

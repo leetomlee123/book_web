@@ -107,7 +107,7 @@ export default {
       sk: 1,
       inS: false,
       loading: false,
-      bid: this.$store.state.bid
+      bid: this.$route.params.bid
     }
   },
   created() {
@@ -146,9 +146,14 @@ export default {
 
     },
     goContent(item) {
-      this.$store.commit("set_chapterIdx", item)
+      // this.$store.commit("set_chapterIdx", item)
 
-      this.$router.push("/content")
+      this.$router.push({
+        name:"content",
+        params:{
+          idx:item
+        }
+      })
     },
     async joinShelf() {
       this.loading = true
