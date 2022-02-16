@@ -1,12 +1,12 @@
 <template>
   <a-row class="header" type="flex" align="start">
-    <a-col :xs="{ span: 4, offset: 1 }" :sm="16" :md="12" :lg="{ span: 2, offset: 2 }">
+    <a-col :xs="{ span: 4, offset: 1 }"  :lg="{ span: 2, offset: 5 }">
       <span class="nav_1">
         <router-link to="/">Deer</router-link>
       </span>
     </a-col>
 
-    <a-col :xs="{ span: 4 }" :sm="16" :md="12" :lg="{ span: 2, offset: 16 }">
+    <a-col :xs="{ span: 4,offset:14 }" :lg="{ span: 2, offset: 10 }">
       <span class="nav_2">
         <a-space class="action" algin="center" size="large">
           <a-dropdown :trigger="['click']">
@@ -37,7 +37,7 @@
   </a-row>
 
   <a-row type="flex" justify="start" class="home">
-    <a-col :xs="{ span: 22, offset: 1 }" :sm="16" :md="12" :lg="{ span: 16, offset: 4 }">
+    <a-col :xs="{ span: 22, offset: 1 }" :sm="16" :md="12" :lg="{ span: 12, offset: 6 }">
       <keep-alive :include="cacheViews">
         <router-view></router-view>
       </keep-alive>
