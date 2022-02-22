@@ -23,8 +23,7 @@
 
 <script>
 const PAGE_SIZE = 10;
-import { VueEternalLoading, LoadAction } from '@ts-pro/vue-eternal-loading';
-import {ref} from 'vue';
+import { VueEternalLoading } from '@ts-pro/vue-eternal-loading';
 import http from '../axios';
 export default {
     name: "colorlist",
@@ -32,7 +31,7 @@ export default {
 
     data() {
         return {
-            list:[]
+            list: []
         }
     },
     created() {
@@ -45,7 +44,7 @@ export default {
         async load(action) {
             var res = await http.get("/color/616f7073db6d00004d001ab2")
             this.list = this.list.concat(res.data)
-             action.loaded(res.data.length, PAGE_SIZE);
+            action.loaded(res.data.length, PAGE_SIZE);
         },
         watchAll(cid, name) {
             this.$router.push({
