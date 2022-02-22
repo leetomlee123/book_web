@@ -125,7 +125,7 @@ export default {
       }
 
       this.books = data.books
-     
+
       this.total = data.pages
 
     },
@@ -151,8 +151,11 @@ export default {
     },
 
     chapters(bid) {
-      this.$store.commit("set_bid", bid);
-      this.$router.push("chapters");
+      // this.$store.commit("set_bid", bid);
+      this.$router.push({
+        name: "chapters",
+        params: { bid: bid }
+      });
     },
     goTop() {
       this.$refs.bksT.scrollIntoView(true);

@@ -1,17 +1,16 @@
 <template>
-        <a-row type="flex" justify="center" v-if="shelf.length > 0">
-            <a-col
-                :xs="10"
-                :sm="16"
-                :md="12"
-                :lg="8"
-                :xl="{ span: 2, offset: 2 }"
-                v-for="(item, index) in shelf"
-                :key="item.Id"
-                class="height-120 "
-                @click="chapters(item.Id)"
-
-            >
+    <a-row type="flex" justify="center" v-if="shelf.length > 0">
+        <a-col
+            :xs="10"
+            :sm="16"
+            :md="12"
+            :lg="8"
+            :xl="{ span: 2, offset: 2 }"
+            v-for="(item, index) in shelf"
+            :key="item.Id"
+            class="height-120"
+            @click="chapters(item.Id)"
+        >
             <center>
                 <a-image
                     :width="100"
@@ -23,11 +22,10 @@
                     {{ item.Name }}|
                     <em>{{ item.Author }}</em>
                 </p>
-                </center>
-            </a-col>
-        </a-row>
-            <a-empty v-if="shelf.length == 0" />
-
+            </center>
+        </a-col>
+    </a-row>
+    <a-empty v-if="shelf.length == 0" />
 </template>
 
 <script>
@@ -58,8 +56,12 @@ export default {
             this.$store.commit("set_shelf", this.shelf);
         },
         chapters(bid) {
-            this.$store.commit("set_bid", bid);
-            this.$router.push("chapters");
+            this.$router.push({
+                name: "chapters",
+                params: { bid: bid }
+            });
+
+            
         }
     },
 
@@ -70,7 +72,7 @@ export default {
 .author {
     padding-top: 5px;
 }
-.c{
-  text-align: center;
+.c {
+    text-align: center;
 }
 </style>

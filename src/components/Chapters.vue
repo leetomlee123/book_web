@@ -107,7 +107,7 @@ export default {
       sk: 1,
       inS: false,
       loading: false,
-      bid: this.$store.state.bid
+      bid: this.$route.params.bid
     }
   },
   created() {
@@ -132,23 +132,29 @@ export default {
   methods: {
     async fetchBookInfo() {
 
-      const response = await http.get("/book/detail/" + this.$store.state.bid);
+      const response = await http.get("/book/detail/" +this.bid);
       this.bookInfo = response.data
       this.$store.commit("set_book_info", this.bookInfo)
 
     },
     async fetchChapters() {
 
-      const response = await http.get("/book/chapters/" + this.$store.state.bid + "/0");
+      const response = await http.get("/book/chapters/" + this.bid + "/0");
       this.chapters = response.data;
       this.$store.commit("set_chapters", this.chapters)
 
 
     },
     goContent(item) {
-      this.$store.commit("set_chapterIdx", item)
+      // this.$store.commit("set_chapterIdx", item)
 
-      this.$router.push("/content")
+       this.$router.push({
+        name:"content",
+        params:{
+          idx:item,
+          bid:this.bid
+        }
+      })
     },
     async joinShelf() {
       this.loading = true
