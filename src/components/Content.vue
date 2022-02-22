@@ -89,7 +89,10 @@ export default {
     return {
       chapter: {},
       idx: this.$route.params.idx,
+<<<<<<< HEAD
       bid: this.$route.params.bid,
+=======
+>>>>>>> 25e4d44ff8c3db2108239e6ff075850111774938
       content: [],
       bookInfo: this.$store.state.bookInfo
     }

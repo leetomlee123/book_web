@@ -148,11 +148,18 @@ export default {
     goContent(item) {
       // this.$store.commit("set_chapterIdx", item)
 
+<<<<<<< HEAD
        this.$router.push({
         name:"content",
         params:{
           idx:item,
           bid:this.bid
+=======
+      this.$router.push({
+        name:"content",
+        params:{
+          idx:item
+>>>>>>> 25e4d44ff8c3db2108239e6ff075850111774938
         }
       })
     },
