@@ -10,17 +10,13 @@ import store from './store'
 const routes = [
     { path: "/", redirect: '/home' },
     {
-        path: "/home", component: () => import('./components/Home.vue'),      meta: {
-            keepAlive: true,
-        },
+        path: "/home", component: () => import('./components/Home.vue'),  
         children: [
             {
                 path: "/shelf", component: () => import('./components/Shelf.vue'), name: "shelf"
             },
             {
-                path: "/chapters/:bid", component: Chapters, name: "chapters",      meta: {
-                    keepAlive: true,
-                },
+                path: "/chapters/:bid", component: Chapters, name: "chapters",
             },
 
             {
