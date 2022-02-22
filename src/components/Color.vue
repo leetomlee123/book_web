@@ -43,8 +43,7 @@ export default {
 
         // 616f7073db6d00004d001ab2
         async load(action) {
-            console.log('ddd')
-            var res = await http.get("/color/5fe35a393848694a84bd5006")
+            var res = await http.get("/color/616f7073db6d00004d001ab2")
             this.list = this.list.concat(res.data)
              action.loaded(res.data.length, PAGE_SIZE);
         },
