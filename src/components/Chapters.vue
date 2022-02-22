@@ -1,7 +1,7 @@
 <template>
   <div class="cps">
     <a-row type="flex" justify="start" align="middle" :gutter="[0, 1]">
-      <a-col :xs="{ span: 10,offset1 }" :sm="16" :md="12" :lg="8" :xl="{ span: 2, offset: 8 }">
+      <a-col :xs="{ span: 10, offset1 }" :sm="16" :md="12" :lg="8" :xl="{ span: 2, offset: 8 }">
         <a-image
           :width="110"
           :src="bookInfo['Img']"
@@ -132,7 +132,7 @@ export default {
   methods: {
     async fetchBookInfo() {
 
-      const response = await http.get("/book/detail/" +this.bid);
+      const response = await http.get("/book/detail/" + this.bid);
       this.bookInfo = response.data
       this.$store.commit("set_book_info", this.bookInfo)
 
@@ -148,20 +148,16 @@ export default {
     goContent(item) {
       // this.$store.commit("set_chapterIdx", item)
 
-<<<<<<< HEAD
-       this.$router.push({
-        name:"content",
-        params:{
-          idx:item,
-          bid:this.bid
-=======
+
       this.$router.push({
-        name:"content",
-        params:{
-          idx:item
->>>>>>> 25e4d44ff8c3db2108239e6ff075850111774938
+        name: "content",
+        params: {
+          idx: item,
+          bid: this.bid
         }
       })
+
+
     },
     async joinShelf() {
       this.loading = true
@@ -189,6 +185,7 @@ export default {
       this.inS = inB;
     },
     goChapters(bid) {
+      debugger
       this.$store.commit("set_bid", bid);
       this.bid = bid
     }
@@ -197,6 +194,5 @@ export default {
 </script>
 
 <style>
-
 </style>
 

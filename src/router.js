@@ -26,7 +26,7 @@ const routes = [
             },
     
             {
-                name: 'content', path: "/content/:idx", component: Content
+                name: 'content', path: "/content/:idx/:bid", component: Content
             },
             {
                 path: '/person', component: () => import('./components/Person.vue'), children: [
@@ -94,10 +94,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     //  matched的数组中包含$route对象的检查元字段
     //  arr.some() 表示判断该数组是否有元素符合相应的条件, 返回布尔值
-<<<<<<< HEAD
 
-=======
->>>>>>> 25e4d44ff8c3db2108239e6ff075850111774938
     if (!to.meta.needToken) {
         // 判断当前是否有登录的权限
 

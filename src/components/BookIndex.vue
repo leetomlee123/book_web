@@ -172,4 +172,7 @@ export default {
 .f {
   padding-bottom: 40px;
 }
+.author{
+  padding-top: 5px;
+}
 </style>

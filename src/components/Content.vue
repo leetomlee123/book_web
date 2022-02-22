@@ -3,7 +3,7 @@
     <a-col :xs="{ span: 22, offset: 1 }" :sm="16" :md="12" :lg="8" :xl="{ span: 22, }">
       <a-breadcrumb separator=">">
         <a-breadcrumb-item>
-          <router-link :to="{name:'chatpers',params:{bid:$route.params.bid}}">{{ bookInfo['Name'] }}</router-link>
+          <router-link :to="{name:'chapters',params:{bid:$route.params.bid}}">{{ bookInfo['Name'] }}</router-link>
         </a-breadcrumb-item>
         <a-breadcrumb-item>{{ chapter['name'] }}</a-breadcrumb-item>
       </a-breadcrumb>
@@ -89,10 +89,9 @@ export default {
     return {
       chapter: {},
       idx: this.$route.params.idx,
-<<<<<<< HEAD
+
       bid: this.$route.params.bid,
-=======
->>>>>>> 25e4d44ff8c3db2108239e6ff075850111774938
+
       content: [],
       bookInfo: this.$store.state.bookInfo
     }
