@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 const http = axios.create({
     // baseURL: 'http://127.0.0.1:8080/v1',
-    baseURL: 'http://134.175.83.19:8011/v1',
+    baseURL: 'https://api.vvhan.com',
     // timeout: 1000,
     // headers: {'X-Custom-Header': 'foobar'}
 });
@@ -28,11 +28,12 @@ http.interceptors.request.use(
 // http response 拦截器
 http.interceptors.response.use(
     response => {
-        var code = response.data.code
+        var code = response.status
+        console.log(code);
         if (!(code == 200 || code == 201)) {
             message.error(response.data.msg)
         }
-        return response.data;
+        return response.data.data;
     },
     error => {
         if (error.response) {

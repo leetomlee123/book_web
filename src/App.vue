@@ -5,11 +5,9 @@
 
 <template>
  <!-- vue3.0配置 -->
-  <router-view v-slot="{ Component }">
-    <keep-alive>
-      <component :is="Component"  v-if="$route.meta.keepAlive"/>
-    </keep-alive>
-    <component :is="Component"  v-if="!$route.meta.keepAlive"/>
+  <router-view>
+  
+ 
   </router-view>
 </template>
 <script>
@@ -29,22 +27,8 @@ export default {
 }
 </script>
 <style>
-/*a:active {*/
-/*  color: #fff ;*/
-/*  text-decoration: none;*/
-/*  background: #f93;*/
-/*}*/
-
-/*a {*/
-/*  color: #956839 ;*/
-/*  background-color: transparent;*/
-/*  text-decoration: none;*/
-/*}*/
-
-
-
-/*a:link {*/
-/*  color: #956839;*/
-/*  text-decoration: none;*/
-/*}*/
+*{
+  margin: 0;
+  padding: 0;
+}
 </style>
